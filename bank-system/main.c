@@ -3,6 +3,7 @@
 #include <string.h>
 #include <ctype.h>
 #include "main.h"
+#include "loaddata.h"
 
 void k_menu() {
 	int select;
@@ -35,6 +36,11 @@ void k_menu() {
 	case '5':
 		printf("종료\n");
 		break;
+	case '6':
+		system("cls");
+		printf("관리자 모드에 진입하였습니다.\n");
+		load_data();
+		break;
 	default:
 		printf("잘못된 입력입니다.\n");
 		break;
@@ -46,14 +52,8 @@ void k_create_account() {
 	printf("계좌 생성\n");
 	printf("---------------------------\n");
 	printf("이름: ");
-	char name[20];
-	getchar(name);
 	printf("생년월일: ");
-	char birth[20];
-	getchar(birth);
 	printf("주소: ");
-	char address[20];	
-	getchar(address);
 }
 
 void k_view_account() {
