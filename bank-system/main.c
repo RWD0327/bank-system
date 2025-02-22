@@ -1,90 +1,127 @@
 #include <stdio.h>
-#include <stdlib.h>
 #include <string.h>
-#include <ctype.h>
-#include "main.h"
-#include "loaddata.h"
+#include <Windows.h>
 
-void k_menu() {
-	int select;
+void create_account() {
+	system("cls");
+	printf("Create Account\n");
+	char name[100];
+	printf("Enter your name: ");
+	scanf_s("%s", name, 100);
+	char address[100];
+	printf("Enter your address: ");
+	scanf_s("%s", address, 100);
+	char phone[100];
+	printf("Enter your phone: ");
+	scanf_s("%s", phone, 100);
+	char email[100];
+	printf("Enter your email: ");
+	scanf_s("%s", email, 100);
+	printf("Account created successfully\n");
+}
 
-	printf("---------------------------\n");
-	printf("JW은행에 오신걸 환영합니다.\n");
-	printf("---------------------------\n");
-	printf("1. 계좌 생성\n");
-	printf("2. 계좌 조회\n");
-	printf("3. 입금\n");
-	printf("4. 출금\n");
-	printf("5. 종료\n");
-	printf("---------------------------\n");
-	printf("> ");
-	select = getchar();
-	switch (select)
+void deposit() {
+	system("cls");
+	printf("Deposit\n");
+	char account_number[100];
+	printf("Enter your account number: ");
+	scanf_s("%s", account_number, 100);
+	char amount[100];
+	printf("Enter the amount: ");
+	scanf_s("%s", amount, 100);
+	printf("Amount deposited successfully\n");
+}
+
+void withdraw() {
+	system("cls");
+	printf("Withdraw\n");
+	char account_number[100];
+	printf("Enter your account number: ");
+	scanf_s("%s", account_number, 100);
+	char amount[100];
+	printf("Enter the amount: ");
+	scanf_s("%s", amount, 100);
+	printf("Amount withdrawn successfully\n");
+}
+
+void display_account() {
+	system("cls");
+	printf("Display Account\n");
+	char account_number[100];
+	printf("Enter your account number: ");
+	scanf_s("%s", account_number, 100);
+	printf("Account details\n");
+}
+
+void admin_mode() {
+	system("cls");
+	printf("Admin Mode\n");
+	printf("1. Display all accounts\n");
+	printf("2. Delete account\n");
+	printf("3. Exit\n");
+
+	int choice;
+
+	printf("Enter your choice: ");
+	scanf_s("%d", &choice);
+
+	switch (choice)
 	{
-	case '1':
-		printf("계좌 생성\n");
-		k_create_account();
-	case '2':
-		printf("계좌 조회\n");
+	case 1:
+		printf("Display all accounts\n");
 		break;
-	case '3':
-		printf("입금\n");
+	case 2:
+		printf("Delete account\n");
 		break;
-	case '4':
-		printf("출금\n");
-		break;
-	case '5':
-		printf("종료\n");
-		break;
-	case '6':
-		system("cls");
-		printf("관리자 모드에 진입하였습니다.\n");
-		load_data();
+	case 3:
+		printf("Exit\n");
 		break;
 	default:
-		printf("잘못된 입력입니다.\n");
+		printf("Invalid choice\n");
 		break;
 	}
-}
-
-void k_create_account() {
-	printf("---------------------------\n");
-	printf("계좌 생성\n");
-	printf("---------------------------\n");
-	printf("이름: ");
-	printf("생년월일: ");
-	printf("주소: ");
-}
-
-void k_view_account() {
-	printf("---------------------------\n");
-	printf("계좌 조회\n");
-	printf("---------------------------\n");
-}
-
-void k_deposit() {
-	printf("---------------------------\n");
-	printf("입금\n");
-	printf("---------------------------\n");
-}
-
-void k_withdraw() {
-	printf("---------------------------\n");
-	printf("출금\n");
-	printf("---------------------------\n");
-}
-
-void k_exit() {
-	printf("---------------------------\n");
-	printf("종료\n");
-	printf("---------------------------\n");
-	exit(0);
 }
 
 int main() {
-	while (1)
+	printf("--- Bank System ---\n");
+	printf("1. Create Account\n");
+	printf("2. Deposit\n");
+	printf("3. Withdraw\n");
+	printf("4. Display Account\n");
+	printf("5. Exit\n");
+
+	int choice;
+
+	printf("Enter your choice: ");
+	scanf_s("%d", &choice);
+
+	switch (choice)
 	{
-		k_menu();
+	case 1:
+		printf("Create Account\n");
+		create_account();
+		break;
+	case 2:
+		printf("Deposit\n");
+		deposit();
+		break;
+	case 3:
+		printf("Withdraw\n");
+		withdraw();
+		break;
+	case 4:
+		printf("Display Account\n");
+		display_account();
+		break;
+	case 5:
+		printf("Exit\n");
+		break;
+	case 6:
+		printf("admin mode\n");
+		admin_mode();
+		break;
+	default:
+		printf("Invalid choice\n");
+		break;
 	}
-	return 0;
 }
